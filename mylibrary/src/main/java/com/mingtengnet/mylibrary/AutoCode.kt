@@ -40,7 +40,9 @@ class AutoCode : LinearLayout, TextWatcher {
     }
 
     override fun afterTextChanged(p0: Editable?) {
-        onComplete(inputData.length == textViews.size)
+        if (this::onComplete.isLateinit) {
+            onComplete(inputData.length == textViews.size)
+        }
     }
 
     override fun beforeTextChanged(p0: CharSequence?, start: Int, end: Int, count: Int) {
